@@ -1,0 +1,88 @@
+@baseUrl = http://localhost:3003/api
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpZCI6IjY1NzRmMWJhYWY4OTNjNjA0Njc2YzZjYiIsImlhdCI6MTcwMzI4OTUzNSwiZXhwIjoxNzAzMzAwMzM1fQ.KSa9735rrhrdKWxbtKMGGcPrWfEp7bBF8D65n2JdWCc
+@listId = 657740e633bbb0e150352cf1
+@task1 = { "taskName": "blood test", "dueDate": "2023-12-09", "listName": "health", "completed": false, "taskNote": "", "listId": "65750197ec70719e801e5368"}
+@task2 = { "taskName": "stop taking tablets", "dueDate": "2023-12-24", "listName": "health", "completed": false, "taskNote": "stop before Dec 24", "listId": {{listId}}}
+@task3 = { "taskName": "strri exercise", "dueDate": "2023-12-31", "listName": "health", "completed": false, "taskNote": "exercise more for health", "listId": {{listId}}}
+@task4 = { "taskName": "drink more water", "dueDate": "2023-1-1", "listName": "health", "completed": false, "taskNote": "drink more water and stand up more"}
+
+### get all users
+get http://localhost:3003/api/user
+
+### Sign up
+post http://localhost:3003/api/user/signup
+Content-Type: application/json
+
+{
+  "username": "public_user",
+  "password": "password"
+}
+
+### Log in
+post http://localhost:3003/api/user/login
+Content-Type: application/json
+
+{
+  "username": "newUser",
+  "password": "pass"
+}
+
+### delete a user
+delete {{baseUrl}}/user/657417e5354f1cad569cbe2b
+
+
+# lists ---------------------------------------------------------------
+
+### Get lists
+get {{baseUrl}}/lists
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+### Create new list
+post {{baseUrl}}/lists
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{
+  "listName": "magic",
+  "tasks": []
+}
+
+### delete a list
+delete {{baseUrl}}/lists/{{listId}}
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{
+  "listName": "health"
+}
+
+# tasks ---------------------------------------------------------------
+### get all tasks
+get {{baseUrl}}/tasks
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+
+### create a new task
+post {{baseUrl}}/tasks
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{{task1}}
+
+### update a task
+put {{baseUrl}}/tasks/{{listId}}
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{{task4}}
+
+### delete a task
+delete {{baseUrl}}/tasks/6584b5f92412a0a3a2cb9d53
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{
+  "listId": "657740e633bbb0e150352cf1"
+}
