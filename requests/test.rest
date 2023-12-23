@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3003/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpZCI6IjY1NzRmMWJhYWY4OTNjNjA0Njc2YzZjYiIsImlhdCI6MTcwMzI4OTUzNSwiZXhwIjoxNzAzMzAwMzM1fQ.KSa9735rrhrdKWxbtKMGGcPrWfEp7bBF8D65n2JdWCc
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpZCI6IjY1NzRmMWJhYWY4OTNjNjA0Njc2YzZjYiIsImlhdCI6MTcwMzM0OTM0NywiZXhwIjoxNzAzMzYwMTQ3fQ.L3Q1G06jM4leA-I5dGEiwxrH3KnNSqiz5wBDpdFRiaA
 @listId = 657740e633bbb0e150352cf1
 @task1 = { "taskName": "blood test", "dueDate": "2023-12-09", "listName": "health", "completed": false, "taskNote": "", "listId": "65750197ec70719e801e5368"}
 @task2 = { "taskName": "stop taking tablets", "dueDate": "2023-12-24", "listName": "health", "completed": false, "taskNote": "stop before Dec 24", "listId": {{listId}}}
