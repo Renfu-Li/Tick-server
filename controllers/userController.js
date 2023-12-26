@@ -24,7 +24,7 @@ userRouter.post("/signup", async (req, res) => {
 
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
-  const newUser = new User({ username, passwordHash });
+  const newUser = new User({ username, passwordHash, lists: [] });
 
   await newUser.save();
   return res.status(200).json(newUser);
@@ -52,7 +52,8 @@ userRouter.post("/login", async (req, res) => {
     id: user._id,
   };
 
-  const token = jwt.sign(userForToken, process.env.SECRET, { expiresIn: "3h" });
+  // add { expiresIn: "3h" } later
+  const token = jwt.sign(userForToken, process.env.SECRET);
   return res.status(200).json({ token, username });
 });
 

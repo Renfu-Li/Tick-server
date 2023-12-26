@@ -12,16 +12,8 @@ const userSchema = new mongoose.Schema(
     },
     lists: [
       {
-        listName: {
-          type: String,
-          required: true,
-        },
-        tasks: [
-          {
-            type: mongoose.Schema.ObjectId,
-            ref: "Task",
-          },
-        ],
+        type: mongoose.Schema.ObjectId,
+        ref: "List",
       },
     ],
   },

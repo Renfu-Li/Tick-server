@@ -20,7 +20,7 @@ const listSchema = new mongoose.Schema(
 
 listSchema.set("toJSON", {
   transform: (document, returnedObject) => {
-    returnedObject.id = document._id;
+    returnedObject.id = returnedObject._id;
     delete returnedObject._id;
     delete returnedObject.__v;
   },

@@ -1,11 +1,12 @@
 @baseUrl = http://localhost:3003/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpZCI6IjY1NzRmMWJhYWY4OTNjNjA0Njc2YzZjYiIsImlhdCI6MTcwMzM4NzIzNCwiZXhwIjoxNzAzMzk4MDM0fQ.CJUOUIRTaOjKRw8UZKHTQ0ZLFBrZC5aOLrLa-lrpZik
-@listId = 657740e633bbb0e150352cf1
-@task1 = { "taskName": "blood test", "dueDate": "2023-12-09", "listName": "health", "completed": false, "taskNote": "", "listId": "65750197ec70719e801e5368"}
-@task2 = { "taskName": "stop taking tablets", "dueDate": "2023-12-24", "listName": "health", "completed": false, "taskNote": "stop before Dec 24", "listId": {{listId}}}
-@task3 = { "taskName": "strri exercise", "dueDate": "2023-12-31", "listName": "health", "completed": false, "taskNote": "exercise more for health", "listId": {{listId}}}
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpZCI6IjY1ODg2Zjc5NTliZGFiNDg0MWUxM2IzNSIsImlhdCI6MTcwMzU3OTE1Nn0.WHdAqbMI5wxn-k_PTEqOLPepr1dO66m1FeEgnVZfKEo
+@listId = 65886ff131f3041dad4f32f1
+@task1 = { "taskName": "blood test", "dueDate": "2023-12-09", "listName": "magic", "completed": false, "taskNote": ""}
+@task2 = { "taskName": "stop taking tablets", "dueDate": "2023-12-24", "listName": "health", "completed": false, "taskNote": "stop before Dec 24"}
+@task3 = { "taskName": "strri exercise", "dueDate": "2023-12-31", "listName": "health", "completed": false, "taskNote": "exercise more for health"}
 @task4 = { "taskName": "drink more water", "dueDate": "2023-1-1", "listName": "health", "completed": false, "taskNote": "drink more water and stand up more"}
 
+# users ---------------------------------------------------------------
 ### get all users
 get http://localhost:3003/api/user
 
@@ -14,8 +15,8 @@ post http://localhost:3003/api/user/signup
 Content-Type: application/json
 
 {
-  "username": "public_user",
-  "password": "password"
+  "username": "newUser",
+  "password": "pass"
 }
 
 ### Log in
@@ -28,13 +29,18 @@ Content-Type: application/json
 }
 
 ### delete a user
-delete {{baseUrl}}/user/657417e5354f1cad569cbe2b
+delete {{baseUrl}}/user/6574f1baaf893c604676c6cb
 
 
 # lists ---------------------------------------------------------------
 
-### Get lists
+### Get all lists
 get {{baseUrl}}/lists
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+### Get a list
+get {{baseUrl}}/lists/65886ff131f3041dad4f32f1
 Content-Type: application/json
 Authorization: bearer {{token}}
 
@@ -44,18 +50,13 @@ Content-Type: application/json
 Authorization: bearer {{token}}
 
 {
-  "listName": "magic",
-  "tasks": []
+  "listName": "health"
 }
 
 ### delete a list
 delete {{baseUrl}}/lists/{{listId}}
 Content-Type: application/json
 Authorization: bearer {{token}}
-
-{
-  "listName": "health"
-}
 
 # tasks ---------------------------------------------------------------
 ### get all tasks
@@ -72,17 +73,14 @@ Authorization: bearer {{token}}
 {{task1}}
 
 ### update a task
-put {{baseUrl}}/tasks/{{listId}}
+put {{baseUrl}}/tasks
 Content-Type: application/json
 Authorization: bearer {{token}}
 
 {{task4}}
 
 ### delete a task
-delete {{baseUrl}}/tasks/657501bdec70719e801e536e
+delete {{baseUrl}}/tasks/6588755be563e2deb8d5fa11
 Content-Type: application/json
 Authorization: bearer {{token}}
 
-{
-  "listId": "6587a3c94a8938e9e1e82883"
-}

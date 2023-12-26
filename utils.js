@@ -33,7 +33,7 @@ const userExtractor = async (req, res, next) => {
       res.status(401).send("token invalid");
     }
 
-    req.user = await User.findById(decodedToken.id).populate("lists.tasks", []);
+    req.user = await User.findById(decodedToken.id).populate("lists");
   } else {
     res.status(401).send("unauthorized");
   }
