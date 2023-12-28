@@ -14,6 +14,10 @@ const taskSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    deleted: {
+      type: Boolean,
+      required: true,
+    },
     taskNote: String,
     listName: String,
     user: {

@@ -17,12 +17,14 @@ taskRouter.get("/", async (req, res) => {
 
 taskRouter.post("/", async (req, res) => {
   const user = req.user;
-  const { taskName, dueDate, listName, completed, taskNote } = req.body;
+  const { taskName, dueDate, listName, completed, deleted, taskNote } =
+    req.body;
 
   const newTask = new Task({
     taskName,
     dueDate,
     completed,
+    deleted,
     taskNote,
     listName,
     user: user._id,
@@ -40,12 +42,14 @@ taskRouter.put("/:id", async (req, res) => {
   const user = req.user;
   const id = req.params.id;
 
-  const { taskName, dueDate, listName, completed, taskNote } = req.body;
+  const { taskName, dueDate, listName, completed, deleted, taskNote } =
+    req.body;
   const newTask = {
     taskName,
     dueDate,
     listName,
     completed,
+    deleted,
     taskNote,
   };
 
