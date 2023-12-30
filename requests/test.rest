@@ -58,6 +58,11 @@ delete {{baseUrl}}/lists/{{listId}}
 Content-Type: application/json
 Authorization: bearer {{token}}
 
+### delete all lists
+delete {{baseUrl}}/lists
+Content-Type: application/json
+Authorization: bearer {{token}}
+
 # tasks ---------------------------------------------------------------
 ### get all tasks
 get {{baseUrl}}/tasks
@@ -81,6 +86,12 @@ Authorization: bearer {{token}}
 
 ### delete a task
 delete {{baseUrl}}/tasks/6588755be563e2deb8d5fa11
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+
+### delete all tasks
+delete {{baseUrl}}/tasks
 Content-Type: application/json
 Authorization: bearer {{token}}
 

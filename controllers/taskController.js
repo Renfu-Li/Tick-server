@@ -32,7 +32,7 @@ taskRouter.post("/", async (req, res) => {
   await newTask.save();
 
   const listToUpdate = await List.findOne({ listName });
-  listToUpdate.tasks.push(newTask._id);
+  listToUpdate.count++;
   await listToUpdate.save();
 
   return res.status(200).json(newTask);
@@ -58,19 +58,28 @@ taskRouter.put("/:id", async (req, res) => {
   return res.status(200).json(updatedTask);
 });
 
+// really delete a task
 taskRouter.delete("/:id", async (req, res) => {
   const taskId = req.params.id;
 
   const deletedTask = await Task.findByIdAndDelete(taskId);
 
-  // delete the task from the List collection
+  // decrease the count from the List collection
   const listToUpdate = await List.findOne({
     listName: deletedTask.listName,
-  }).populate("tasks");
-  const updatedTasks = listToUpdate.tasks.filter((task) => task.id !== taskId);
-  listToUpdate.tasks = updatedTasks;
+  });
+
+  listToUpdate.count--;
   await listToUpdate.save();
-  return res.status(200).json(deletedTask);
+  return res.status(204).json(deletedTask);
+});
+
+// really delete all tasks
+taskRouter.delete("/", async (req, res) => {
+  await Task.deleteMany({});
+  await List.deleteMany({});
+
+  return res.status(204).send("All tasks and lists deleted");
 });
 
 module.exports = taskRouter;

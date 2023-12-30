@@ -22,14 +22,14 @@ listRouter.post("/", async (req, res) => {
 
   const newList = new List({
     listName,
-    tasks: [],
+    count: 0,
   });
   await newList.save();
 
   user.lists.push(newList);
   await user.save();
 
-  return res.status(200).json(user.lists);
+  return res.status(201).json(user.lists);
 });
 
 listRouter.put("/:id", async (req, res) => {
@@ -38,9 +38,11 @@ listRouter.put("/:id", async (req, res) => {
   await List.findByIdAndUpdate(listId, { listName, tasks }, { new: true });
 });
 
-listRouter.delete("/:listId", async (req, res) => {
+listRouter.delete("/:id", async (req, res) => {
   const user = req.user;
-  const listId = req.params.listId;
+  const listId = req.params.id;
+  await List.findByIdAndDelete(listId);
+
   user.lists.pull(listId);
   await user.save();
 
@@ -48,6 +50,13 @@ listRouter.delete("/:listId", async (req, res) => {
   await Task.deleteMany({ _id: listId });
 
   res.status(200).json(user.lists);
+});
+
+// delete all the lists for testing
+listRouter.delete("/", async (req, res) => {
+  await List.deleteMany({});
+
+  res.status(204);
 });
 
 module.exports = listRouter;
