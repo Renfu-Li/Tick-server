@@ -14,7 +14,7 @@ const taskSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    deleted: {
+    removed: {
       type: Boolean,
       required: true,
     },

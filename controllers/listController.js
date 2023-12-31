@@ -22,11 +22,11 @@ listRouter.post("/", async (req, res) => {
 
   const newList = new List({
     listName,
-    count: 0,
+    tasks: [],
   });
   await newList.save();
 
-  user.lists.push(newList);
+  user.lists.push(newList._id);
   await user.save();
 
   return res.status(201).json(user.lists);
@@ -41,13 +41,11 @@ listRouter.put("/:id", async (req, res) => {
 listRouter.delete("/:id", async (req, res) => {
   const user = req.user;
   const listId = req.params.id;
-  await List.findByIdAndDelete(listId);
+  const listToDelete = await List.findById(listId);
 
-  user.lists.pull(listId);
-  await user.save();
-
-  // also delete all the tasks within that list
-  await Task.deleteMany({ _id: listId });
+  await Task.deleteMany({ listName: listToDelete.listName });
+  await user.lists.pull(listToDelete._id);
+  await listToDelete.deleteOne();
 
   res.status(200).json(user.lists);
 });

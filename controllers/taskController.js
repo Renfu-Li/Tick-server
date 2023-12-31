@@ -17,14 +17,14 @@ taskRouter.get("/", async (req, res) => {
 
 taskRouter.post("/", async (req, res) => {
   const user = req.user;
-  const { taskName, dueDate, listName, completed, deleted, taskNote } =
+  const { taskName, dueDate, listName, completed, removed, taskNote } =
     req.body;
 
   const newTask = new Task({
     taskName,
     dueDate,
     completed,
-    deleted,
+    removed,
     taskNote,
     listName,
     user: user._id,
@@ -32,24 +32,23 @@ taskRouter.post("/", async (req, res) => {
   await newTask.save();
 
   const listToUpdate = await List.findOne({ listName });
-  listToUpdate.count++;
+  listToUpdate.tasks.push(newTask._id);
   await listToUpdate.save();
 
   return res.status(200).json(newTask);
 });
 
 taskRouter.put("/:id", async (req, res) => {
-  const user = req.user;
   const id = req.params.id;
 
-  const { taskName, dueDate, listName, completed, deleted, taskNote } =
+  const { taskName, dueDate, listName, completed, removed, taskNote } =
     req.body;
   const newTask = {
     taskName,
     dueDate,
     listName,
     completed,
-    deleted,
+    removed,
     taskNote,
   };
 
@@ -58,19 +57,41 @@ taskRouter.put("/:id", async (req, res) => {
   return res.status(200).json(updatedTask);
 });
 
+// move a task from one list to another list
+taskRouter.put("/:id/move", async (req, res) => {
+  const taskId = req.params.id;
+  const { sourceListId, newListId } = req.body;
+  await List.findByIdAndUpdate(
+    sourceListId,
+    {
+      $pull: { tasks: taskId },
+    },
+    { new: true }
+  );
+
+  await List.findByIdAndUpdate(
+    newListId,
+    {
+      $push: { tasks: taskId },
+    },
+    { new: true }
+  );
+
+  res.status(200).json({ message: "Task moved successfully" });
+});
+
 // really delete a task
 taskRouter.delete("/:id", async (req, res) => {
   const taskId = req.params.id;
 
   const deletedTask = await Task.findByIdAndDelete(taskId);
 
-  // decrease the count from the List collection
+  // delete the taskId from the List collection
   const listToUpdate = await List.findOne({
     listName: deletedTask.listName,
   });
 
-  listToUpdate.count--;
-  await listToUpdate.save();
+  await listToUpdate.tasks.pull(deletedTask._id);
   return res.status(204).json(deletedTask);
 });
 

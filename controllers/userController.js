@@ -24,7 +24,7 @@ userRouter.post("/signup", async (req, res) => {
 
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
-  const newUser = new User({ username, passwordHash, lists: [] });
+  const newUser = new User({ username, passwordHash });
 
   await newUser.save();
   return res.status(200).json(newUser);
@@ -50,6 +50,7 @@ userRouter.post("/login", async (req, res) => {
   const userForToken = {
     username,
     id: user._id,
+    lists: [],
   };
 
   // add { expiresIn: "3h" } later
