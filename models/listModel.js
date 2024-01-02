@@ -6,12 +6,10 @@ const listSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    tasks: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: "Task",
-      },
-    ],
+    count: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,

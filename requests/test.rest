@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3003/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpZCI6IjY1OTQzZmE5ODY5NjA4OGEyMGFmMjJiZiIsImxpc3RzIjpbXSwiaWF0IjoxNzA0MjE0NDg2fQ.Fx7jUcOrXY-813HoruYzBXFTN9J4zlwcLGeB8jbjdUU
-@listId = 65943fe48696088a20af22c7
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpZCI6IjY1OTQ2MGU4YzVhNDIyOWM1NDk5NjA1NSIsImlhdCI6MTcwNDIyMjk1N30.qeyFeNSgFZ4Hth09eqYST-7_YN2MxJS71XPSx0PTStE
+@listId = 6594746da97bc8b7ccf2e844
 @task1 = { "taskName": "blood test", "dueDate": "2023-12-09", "listName": "magic", "completed": false, "taskNote": ""}
 @task2 = { "taskName": "stop taking tablets", "dueDate": "2023-12-24", "listName": "health", "completed": false, "taskNote": "stop before Dec 24"}
 @task3 = { "taskName": "strri exercise", "dueDate": "2023-12-31", "listName": "health", "completed": false, "taskNote": "exercise more for health"}
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ### delete a user
-delete {{baseUrl}}/user/65943f793baaad730362046a
+delete {{baseUrl}}/user/6594583a31cb2ad436700b00
 
 
 # lists ---------------------------------------------------------------

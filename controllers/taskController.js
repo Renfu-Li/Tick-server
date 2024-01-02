@@ -32,7 +32,7 @@ taskRouter.post("/", async (req, res) => {
   await newTask.save();
 
   const listToUpdate = await List.findOne({ listName });
-  listToUpdate.tasks.push(newTask._id);
+  listToUpdate.count++;
   await listToUpdate.save();
 
   return res.status(200).json(newTask);

@@ -22,30 +22,40 @@ listRouter.post("/", async (req, res) => {
 
   const newList = new List({
     listName,
-    tasks: [],
+    count: 0,
   });
   await newList.save();
 
   user.lists.push(newList._id);
   await user.save();
 
-  return res.status(201).json(user.lists);
+  return res.status(201).json(newList);
 });
 
 listRouter.put("/:id", async (req, res) => {
   const listId = req.params.id;
-  const { listName, tasks } = req.body;
-  await List.findByIdAndUpdate(listId, { listName, tasks }, { new: true });
+  const { listName, count } = req.body;
+
+  const updatedList = await List.findByIdAndUpdate(
+    listId,
+    { listName, count },
+    { new: true }
+  );
+
+  return res.status(200).json(updatedList);
 });
 
 listRouter.delete("/:id", async (req, res) => {
   const user = req.user;
   const listId = req.params.id;
-  const listToDelete = await List.findById(listId);
-
-  await Task.deleteMany({ listName: listToDelete.listName });
-  await user.lists.pull(listToDelete._id);
+  const listToDelete = List.findById(listId);
   await listToDelete.deleteOne();
+
+  user.lists.pull(listId);
+  await user.save();
+
+  // also delete all the tasks within that list
+  await Task.deleteMany({ listName: listToDelete.listName });
 
   res.status(200).json(user.lists);
 });
