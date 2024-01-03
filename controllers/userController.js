@@ -50,7 +50,6 @@ userRouter.post("/login", async (req, res) => {
   const userForToken = {
     username,
     id: user._id,
-    lists: [],
   };
 
   // add { expiresIn: "3h" } later

@@ -15,8 +15,8 @@ post http://localhost:3003/api/user/signup
 Content-Type: application/json
 
 {
-  "username": "newUser",
-  "password": "pass"
+  "username": "public_user",
+  "password": "password"
 }
 
 ### Log in
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ### delete a user
-delete {{baseUrl}}/user/6594583a31cb2ad436700b00
+delete {{baseUrl}}/user/659460e8c5a4229c54996055
 
 
 # lists ---------------------------------------------------------------

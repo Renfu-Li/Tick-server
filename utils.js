@@ -38,8 +38,6 @@ const userExtractor = async (req, res, next) => {
     res.status(401).send("unauthorized");
   }
 
-  // console.log("extracted user: ", req.user);
-
   next();
 };
 
