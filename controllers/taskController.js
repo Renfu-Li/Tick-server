@@ -86,12 +86,7 @@ taskRouter.delete("/:id", async (req, res) => {
 
   const deletedTask = await Task.findByIdAndDelete(taskId);
 
-  // delete the taskId from the List collection
-  const listToUpdate = await List.findOne({
-    listName: deletedTask.listName,
-  });
-
-  await listToUpdate.tasks.pull(deletedTask._id);
+  // no need to update the List collection because the count remains unchanged
   return res.status(204).json(deletedTask);
 });
 
