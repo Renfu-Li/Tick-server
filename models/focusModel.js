@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const focusSchema = new mongoose.Schema({
   task: {
@@ -14,10 +14,6 @@ const focusSchema = new mongoose.Schema({
     required: true,
   },
   end: {
-    type: Date,
-    required: true,
-  },
-  date: {
     type: Date,
     required: true,
   },

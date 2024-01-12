@@ -5,21 +5,22 @@ const focusRouter = Router();
 
 focusRouter.get("/", async (req, res) => {
   const user = req.user;
+  console.log(user);
+
   const focuses = await Focus.find({ user: user._id });
 
-  return res.status(200).json(tasks);
+  return res.status(200).json(focuses);
 });
 
 focusRouter.post("/", async (req, res) => {
   const user = req.user;
-  const { taskId, start, end, date, focusNote } = req.body;
+  const { taskId, start, end, focusNote } = req.body;
 
   const newFocus = new Focus({
     task: taskId,
     user: user._id,
     start,
     end,
-    date,
     focusNote,
   });
 
@@ -27,3 +28,5 @@ focusRouter.post("/", async (req, res) => {
 
   return res.status(200).json(newFocus);
 });
+
+module.exports = focusRouter;

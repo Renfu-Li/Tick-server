@@ -7,6 +7,7 @@ const { logger, userExtractor, errorHandler } = require("./utils");
 const taskRouter = require("./controllers/taskController");
 const userRouter = require("./controllers/userController");
 const listRouter = require("./controllers/listController");
+const focusRouter = require("./controllers/focusController");
 const testingRouter = require("./controllers/testing");
 
 console.log(process.env.MONGO_URI);
@@ -33,6 +34,7 @@ app.use("/api/user", userRouter);
 app.use(userExtractor);
 app.use("/api/lists", listRouter);
 app.use("/api/tasks", taskRouter);
+app.use("/api/focus", focusRouter);
 
 app.use(errorHandler);
 
