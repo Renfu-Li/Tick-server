@@ -5,9 +5,8 @@ const focusRouter = Router();
 
 focusRouter.get("/", async (req, res) => {
   const user = req.user;
-  console.log(user);
 
-  const focuses = await Focus.find({ user: user._id });
+  const focuses = await Focus.find({ user: user._id }).populate("task");
 
   return res.status(200).json(focuses);
 });
