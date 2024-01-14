@@ -25,9 +25,9 @@ app.use(cors());
 app.use(express.json());
 // app.use(logger);
 
-if (process.env.NODE_ENV === "test") {
-  app.use("/api/testing", testingRouter);
-}
+// if (process.env.NODE_ENV === "test") {
+app.use("/api/testing", testingRouter);
+// }
 
 app.use("/api/user", userRouter);
 

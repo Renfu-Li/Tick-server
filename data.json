@@ -1,0 +1,104 @@
+{
+  "tasks": [
+    {
+      "taskName": "fix 1 bug",
+      "taskNote": "complete before Jan 6",
+      "listName": "development"
+    },
+    {
+      "taskName": "add calendar feature",
+      "taskNote": "first implement a simple calendar",
+      "listName": "development"
+    },
+    {
+      "taskName": "combine selectedList and listToShow",
+      "taskNote": "reduce the number of state to update state more conveniently",
+      "listName": "development"
+    },
+    {
+      "taskName": "add a button to recover a task from Trash",
+      "taskNote": "also replace the delete button with a delete forever button",
+      "listName": "development"
+    },
+    {
+      "taskName": "make an appointment for stomach test",
+      "taskNote": "for long term health",
+      "listName": "health"
+    },
+    {
+      "taskName": "go out today to keep in touch with the external world",
+      "taskNote": "and get some fresh air",
+      "listName": "health"
+    },
+    {
+      "taskName": "shop at Costco",
+      "taskNote": "see the shopping list in Notes",
+      "listName": "general"
+    },
+    {
+      "taskName": "write dairy",
+      "taskNote": "talk to self more",
+      "listName": "general"
+    },
+    {
+      "taskName": "game night",
+      "taskNote": "send the project link to miemie",
+      "listName": "general"
+    },
+    {
+      "taskName": "hike with friends",
+      "taskNote": "pick a good day",
+      "listName": "health"
+    },
+    {
+      "taskName": "swim",
+      "taskNote": "go out early",
+      "listName": "health"
+    },
+    {
+      "taskName": "walk at a park",
+      "taskNote": "with a friend",
+      "listName": "health"
+    },
+    {
+      "taskName": "Christmas preparation",
+      "taskNote": "",
+      "listName": "social"
+    },
+    {
+      "taskName": "meet Z",
+      "taskNote": "at central park",
+      "listName": "social"
+    },
+    {
+      "taskName": "lunch with X",
+      "taskNote": "arribe at 11:30. don't be late this time",
+      "listName": "social"
+    },
+    {
+      "taskName": "watch Netflix with friends at home",
+      "taskNote": "prepare some fruits",
+      "listName": "social"
+    },
+    {
+      "taskName": "wash clothes tonight",
+      "taskNote": "don't forget the those in bathroom!",
+      "listName": "general"
+    },
+    {
+      "taskName": "return the useless bluetooth speaker",
+      "taskNote": "before 14 days since purchase",
+      "listName": "general"
+    },
+    {
+      "taskName": "clean up Mac mini to free some space",
+      "taskNote": "espacially the large files",
+      "listName": "general"
+    },
+    {
+      "taskName": "call Mom this weekend",
+      "taskNote": "try to say more than last time",
+      "listName": "social"
+    }
+  ]
+}

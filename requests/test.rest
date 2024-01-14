@@ -24,7 +24,7 @@ post http://localhost:3003/api/user/login
 Content-Type: application/json
 
 {
-  "username": "newUser",
+  "username": "publis_user",
   "password": "pass"
 }
 
@@ -95,3 +95,12 @@ delete {{baseUrl}}/tasks
 Content-Type: application/json
 Authorization: bearer {{token}}
 
+# reset: clear and seed db ---------------------------------------------------------------
+### reset db (clear + seed)
+post {{baseUrl}}/testing/reset
+
+### clear db
+post {{baseUrl}}/testing/clear
+
+### seed db
+post {{baseUrl}}/testing/seed
