@@ -10,7 +10,7 @@ const listRouter = require("./controllers/listController");
 const focusRouter = require("./controllers/focusController");
 const testingRouter = require("./controllers/testing");
 
-console.log(process.env.MONGO_URI);
+// console.log(process.env.MONGO_URI);
 const URI = process.env.MONGO_URI;
 
 mongoose

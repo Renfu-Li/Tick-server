@@ -56,9 +56,9 @@ const seedDB = async () => {
   console.log("tasks", allTasks);
 
   const createFocuses = async (focuses) => {
-    const taskIndex = randomNum(0, allTasks.length).exclusive;
-
     for (const focus of focuses) {
+      const taskIndex = randomNum(0, allTasks.length).exclusive;
+
       const newFocus = new Focus({
         ...focus,
         task: allTasks[taskIndex]._id,

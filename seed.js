@@ -10,6 +10,27 @@ const randomNum = (min, max) => {
   return { inclusive, exclusive };
 };
 
+const addDays = (dateDiff, date = new Date()) => {
+  const newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + dateDiff);
+  newDate.setHours(0, 0, 0, 0);
+
+  return newDate;
+};
+
+const getAllDatesInRange = (first, last) => {
+  let dateArr = [];
+  for (
+    let date = new Date(first);
+    date <= new Date(last);
+    date = addDays(1, date)
+  ) {
+    dateArr.push(date);
+  }
+
+  return dateArr;
+};
+
 const generateDate = () => {
   const monthIndex = randomNum(0, allMonths.length).exclusive;
   const day = randomNum(1, 28).inclusive;
@@ -41,7 +62,9 @@ const generateStartEnd = () => {
   const hour = randomNum(8, 20).inclusive;
   const minute = randomNum(0, 59).inclusive;
 
-  const start = new Date(generateDate());
+  const allPossibleDates = getAllDatesInRange("2023-12-1", "2024-01-14");
+  const dateIndex = randomNum(0, allPossibleDates.length).exclusive;
+  const start = allPossibleDates[dateIndex];
   start.setHours(hour, minute, 0, 0);
   const end = new Date(
     start.getTime() + randomNum(DURATION.min, DURATION.max).inclusive
@@ -84,6 +107,6 @@ for (let i = 0; i < focusNum; i++) {
   });
 }
 
-console.log(tasks);
+// console.log(tasks);
 
 module.exports = { tasks, lists, focuses, randomNum, generateStartEnd };
