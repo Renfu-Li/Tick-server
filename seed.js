@@ -19,7 +19,7 @@ const addDays = (dateDiff, date = new Date()) => {
 };
 
 const getAllDatesInRange = (first, last) => {
-  let dateArr = [];
+  const dateArr = [];
   for (
     let date = new Date(first);
     date <= new Date(last);
