@@ -10,7 +10,6 @@ const listRouter = require("./controllers/listController");
 const focusRouter = require("./controllers/focusController");
 const testingRouter = require("./controllers/testing");
 
-// console.log(process.env.MONGO_URI);
 const URI = process.env.MONGO_URI;
 
 mongoose
@@ -25,9 +24,9 @@ app.use(cors());
 app.use(express.json());
 // app.use(logger);
 
-// if (process.env.NODE_ENV === "test") {
-app.use("/api/testing", testingRouter);
-// }
+if (process.env.NODE_ENV === "test") {
+  app.use("/api/testing", testingRouter);
+}
 
 app.use("/api/user", userRouter);
 

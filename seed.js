@@ -107,6 +107,4 @@ for (let i = 0; i < focusNum; i++) {
   });
 }
 
-// console.log(tasks);
-
 module.exports = { tasks, lists, focuses, randomNum, generateStartEnd };

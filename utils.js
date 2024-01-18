@@ -7,20 +7,6 @@ const logger = (...params) => {
   }
 };
 
-// const tokenExtractor = (req, res, next) => {
-//   const authorization = req.get("authorization");
-
-//   if (authorization && authorization.startsWith("bearer ")) {
-//     req.token = authorization.substring(7);
-//   } else {
-//     res.status(401).send("unauthorized");
-//   }
-
-//   console.log("extracted token: ", req.token);
-
-//   next();
-// };
-
 const userExtractor = async (req, res, next) => {
   const authorization = req.get("authorization");
   if (authorization && authorization.startsWith("bearer ")) {
