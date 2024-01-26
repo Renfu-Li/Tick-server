@@ -3,7 +3,6 @@
 
 const Router = require("express").Router;
 
-const User = require("../models/userModel");
 const Task = require("../models/taskModel");
 const List = require("../models/listModel");
 const taskRouter = Router();

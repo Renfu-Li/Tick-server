@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3003/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1YmxpY191c2VyIiwiaWQiOiI2NWE0YzU1ZjA3OWQwNTY1ODAwZDU3OTQiLCJpYXQiOjE3MDYxNjUxNjR9.wg5A6y0jrm1VToFk-DCxJUoDjjR0HCnP1P9EH9HukIw
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1YmxpY191c2VyIiwiaWQiOiI2NWIzZWNmY2Y4M2I5OWZjM2JjMzA3MWYiLCJpYXQiOjE3MDYyOTA0NTF9.h7S-J51xQL7qXABJE6B3Jybv0RcZxi-8i8Dsj_yUU0Q
 @listId = 6594746da97bc8b7ccf2e844
 @task1 = { "taskName": "blood test", "dueDate": "2023-12-09", "listName": "magic", "completed": false, "taskNote": ""}
 @task2 = { "taskName": "stop taking tablets", "dueDate": "2023-12-24", "listName": "health", "completed": false, "taskNote": "stop before Dec 24"}
@@ -94,6 +94,13 @@ Authorization: bearer {{token}}
 delete {{baseUrl}}/tasks
 Content-Type: application/json
 Authorization: bearer {{token}}
+
+# reset: clear and seed db ---------------------------------------------------------------
+### get all focuses
+get {{baseUrl}}/focus
+Content-Type: application/json
+Authorization: bearer {{token}}
+
 
 # reset: clear and seed db ---------------------------------------------------------------
 ### reset db (clear + seed)
