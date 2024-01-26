@@ -28,4 +28,11 @@ focusRouter.post("/", async (req, res) => {
   return res.status(200).json(newFocus);
 });
 
+focusRouter.delete("/", async (req, res) => {
+  const { taskId } = req.body;
+  await Focus.deleteMany({ task: taskId });
+
+  return res.status(200).end();
+});
+
 module.exports = focusRouter;

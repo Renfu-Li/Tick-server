@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3003/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld1VzZXIiLCJpZCI6IjY1OTVkMzdjNDk5ZTVlN2Y3MGVjODU2NyIsImlhdCI6MTcwNDMxODYyOH0.0bikzkX5pz8zeHl6PmGKJNMRFKiFMDWQB0kJm4nEcvE
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1YmxpY191c2VyIiwiaWQiOiI2NWE0YzU1ZjA3OWQwNTY1ODAwZDU3OTQiLCJpYXQiOjE3MDYxNjUxNjR9.wg5A6y0jrm1VToFk-DCxJUoDjjR0HCnP1P9EH9HukIw
 @listId = 6594746da97bc8b7ccf2e844
 @task1 = { "taskName": "blood test", "dueDate": "2023-12-09", "listName": "magic", "completed": false, "taskNote": ""}
 @task2 = { "taskName": "stop taking tablets", "dueDate": "2023-12-24", "listName": "health", "completed": false, "taskNote": "stop before Dec 24"}
@@ -24,7 +24,7 @@ post http://localhost:3003/api/user/login
 Content-Type: application/json
 
 {
-  "username": "publis_user",
+  "username": "public_user",
   "password": "pass"
 }
 

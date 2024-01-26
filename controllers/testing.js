@@ -53,8 +53,6 @@ const seedDB = async () => {
   // create focuses
   const allTasks = await Task.find({ user: userInDB._id });
 
-  console.log("tasks", allTasks);
-
   const createFocuses = async (focuses) => {
     for (const focus of focuses) {
       const taskIndex = randomNum(0, allTasks.length).exclusive;
@@ -77,20 +75,20 @@ const seedDB = async () => {
 testingRouter.post("/clear", async (req, res) => {
   await clearDB();
 
-  res.status(204).end();
+  res.status(204).send("Cleared successfully");
 });
 
 testingRouter.post("/seed", async (req, res) => {
   await seedDB();
 
-  res.status(204).end();
+  res.status(204).send("Seeded successfully");
 });
 
 testingRouter.post("/reset", async (req, res) => {
   await clearDB();
   await seedDB();
 
-  res.status(204).end();
+  res.status(204).send("Reset successfully");
 });
 
 module.exports = testingRouter;
