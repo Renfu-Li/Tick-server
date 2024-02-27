@@ -1,7 +1,7 @@
 const data = require("./data.json");
 
 const listNames = ["general", "development", "health", "social"];
-const allMonths = ["2023-12", "2024-1"];
+const allMonths = ["2023-12", "2024-1", "2024-2"];
 
 const randomNum = (min, max) => {
   const inclusive = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -62,7 +62,7 @@ const generateStartEnd = () => {
   const hour = randomNum(8, 20).inclusive;
   const minute = randomNum(0, 59).inclusive;
 
-  const allPossibleDates = getAllDatesInRange("2023-12-1", "2024-01-14");
+  const allPossibleDates = getAllDatesInRange("2023-12-1", new Date());
   const dateIndex = randomNum(0, allPossibleDates.length).exclusive;
   const start = allPossibleDates[dateIndex];
   start.setHours(hour, minute, 0, 0);
